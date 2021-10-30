@@ -3,21 +3,7 @@
 #include<iostream>
 #include"assert.h"
 using namespace std;
-Matrix::Matrix(unsigned int numC, unsigned int numL)
-{
-	assert(numC!=0&&numL!=0);
-	this->numC = numC;
-	this->numL = numL;
-	this->Matx = new int*[numL];
-	for (int i = 0; i < numL; i++)this->Matx[i] =new int[numC];
-	for (int i = 0; i < numL; i++)
-	{
-		for (int j = 0; j < numC; j++)
-		{
-			this->Matx[i][j] = 0;
-		}
-	}
-}
+
 
 void Matrix::Remplissage(int elem)
 {
@@ -29,8 +15,16 @@ void Matrix::Remplissage(int elem)
 		}
 	}
 }
-
-Matrix& Matrix::operator+(const Matrix& R) const
+Matrix::Matrix(unsigned int numC, unsigned int numL)
+{
+	assert(numC != 0 && numL != 0);
+	this->numC = numC;
+	this->numL = numL;
+	this->Matx = new int* [numL];
+	for (int i = 0; i < numL; i++)this->Matx[i] = new int[numC];
+	this->Remplissage(0);
+}
+Matrix* Matrix::operator+(const Matrix& R) const
 {
 	assert(this->numC==R.numC&&this->numL==R.numC);
 	Matrix *pt=new Matrix(this->numC, this->numL);
@@ -41,10 +35,10 @@ Matrix& Matrix::operator+(const Matrix& R) const
 			pt->Matx[i][j] = this->Matx[i][j] + R.Matx[i][j];
 		}
 	}
-	return *pt;
+	return pt;
 }
 
-Matrix& Matrix::operator+(int elem) const
+Matrix* Matrix::operator+(int elem) const
 {
 	Matrix* pt = new Matrix(this->numC, this->numL);
 	for (int i = 0; i < this->numL; i++)
@@ -54,10 +48,10 @@ Matrix& Matrix::operator+(int elem) const
 			pt->Matx[i][j] = this->Matx[i][j] + elem;
 		}
 	}
-	return *pt;
+	return pt;
 }
 
-Matrix& Matrix::operator-(const Matrix& R) const
+Matrix* Matrix::operator-(const Matrix& R) const
 {
 	assert(this->numC == R.numC && this->numL == R.numC);
 	Matrix* pt = new Matrix(this->numC, this->numL);
@@ -68,10 +62,10 @@ Matrix& Matrix::operator-(const Matrix& R) const
 			pt->Matx[i][j] = this->Matx[i][j] - R.Matx[i][j];
 		}
 	}
-	return *pt;
+	return pt;
 }
 
-Matrix& Matrix::operator-(int elem) const
+Matrix* Matrix::operator-(int elem) const
 {
 	Matrix* pt = new Matrix(this->numC, this->numL);
 	for (int i = 0; i < this->numL; i++)
@@ -81,10 +75,28 @@ Matrix& Matrix::operator-(int elem) const
 			pt->Matx[i][j] = this->Matx[i][j] - elem;
 		}
 	}
-	return *pt;
+	return pt;
 }
 
-Matrix& Matrix::operator*(int elem) const
+Matrix* Matrix::operator*(const Matrix&R) const
+{
+	assert(this->numC == R.numL);
+
+	Matrix* nM = new Matrix(R.numC, this->numL);
+	for (int i = 0; i < nM->numL; i++)
+	{
+		for (int j = 0; j < nM->numC; j++)
+		{
+			nM->Matx[i][j]=0;
+			for (int k = 0; k <this->numC; k++)
+			{
+				nM->Matx[i][j] +=this->Matx[i][k]*R.Matx[k][i];
+			}
+		}
+	}
+	return nM;
+}
+Matrix* Matrix::operator*(int elem) const
 {
 	Matrix* pt = new Matrix(this->numC, this->numL);
 	for (int i = 0; i < this->numL; i++)
@@ -94,19 +106,22 @@ Matrix& Matrix::operator*(int elem) const
 			pt->Matx[i][j] = this->Matx[i][j] * elem;
 		}
 	}
-	return *pt;
+	return pt;
 }
 
 void Matrix::Print() const
 {
+	cout << "{ ";
 	for (int i = 0; i < this->numL; i++)
 	{
 		for (int j = 0; j < this->numC; j++)
 		{
-			cout << "," << this->Matx[i][j];
+			cout <<  this->Matx[i][j];
+			if (j != this->numC - 1) cout << ",";
 		}
-		cout << endl;
+		if(this->numL-1!=i)cout << endl << "  ";
 	}
+	cout << " }";
 }
 
 Matrix::~Matrix()
@@ -114,7 +129,7 @@ Matrix::~Matrix()
 	for (int i = 0; i < this->numL; i++)
 	{
 		delete this->Matx[i];
-		this->Matx = NULL;
+		this->Matx[i] = NULL;
 	}
 	delete this->Matx;
 	this->Matx = NULL;
