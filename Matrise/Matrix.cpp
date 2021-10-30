@@ -38,19 +38,6 @@ Matrix* Matrix::operator+(const Matrix& R) const
 	return pt;
 }
 
-Matrix* Matrix::operator+(int elem) const
-{
-	Matrix* pt = new Matrix(this->numC, this->numL);
-	for (int i = 0; i < this->numL; i++)
-	{
-		for (int j = 0; j < this->numC; j++)
-		{
-			pt->Matx[i][j] = this->Matx[i][j] + elem;
-		}
-	}
-	return pt;
-}
-
 Matrix* Matrix::operator-(const Matrix& R) const
 {
 	assert(this->numC == R.numC && this->numL == R.numC);
@@ -65,18 +52,6 @@ Matrix* Matrix::operator-(const Matrix& R) const
 	return pt;
 }
 
-Matrix* Matrix::operator-(int elem) const
-{
-	Matrix* pt = new Matrix(this->numC, this->numL);
-	for (int i = 0; i < this->numL; i++)
-	{
-		for (int j = 0; j < this->numC; j++)
-		{
-			pt->Matx[i][j] = this->Matx[i][j] - elem;
-		}
-	}
-	return pt;
-}
 
 Matrix* Matrix::operator*(const Matrix&R) const
 {

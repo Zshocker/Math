@@ -10,9 +10,7 @@ public:
 	void Remplissage(int elem);
 	Matrix& operator=(const Matrix&)const=delete;
 	Matrix* operator+(const Matrix&)const;
-	Matrix* operator+(int elem)const;
 	Matrix* operator-(const Matrix&)const;
-	Matrix* operator-(int elem)const;
 	Matrix* operator*(const Matrix&)const;
 	Matrix* operator*(int elem)const;
 	void Print()const;
