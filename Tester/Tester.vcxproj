@@ -145,9 +145,6 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Matrise\Matrise.vcxproj">
-      <Project>{cace2af2-98c9-4f52-abe0-62fa390f0960}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\Vector3d\Vector3d.vcxproj">
       <Project>{627645ab-3561-4766-875d-25be416ea5f7}</Project>
     </ProjectReference>

@@ -1,9 +1,7 @@
-#include"Matrix.h"
+#include"Vector3D.h"
+using namespace Math3d;
 void main() {
-	Matrix Ar(2, 4);
-	Ar.Remplissage(4);
-	Matrix AT(5,2);
-	AT.Remplissage(5);
-	Matrix* Se = AT * Ar;
-	Se->Print();
+	Vector3D V1(1, 2, 3);
+	Vector3D V2(1, 4, -1);
+	V1.Print();
 }
