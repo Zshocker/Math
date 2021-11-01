@@ -1,23 +1,23 @@
 #include"pch.h"
-#include "Vector3D.h"
+#include "MathClasses.h"
 #include<iostream>
 using namespace std;
 // TODO: This is an example of a library function
+using namespace Math;
 
-
-Math3d::Vector3D::Vector3D(float x, float y, float z)
+Math::Vector3D::Vector3D(float x, float y, float z)
 {
 	this->Vect[0] = x;
 	this->Vect[1] = y;
 	this->Vect[2] = z;
 }
 
-void Math3d::Vector3D::Print()
+void Math::Vector3D::Print()
 {
 	cout << "{ " << this->Vect[0] << ", " << this->Vect[1] << ", " << this->Vect[2] << " }";
 }
 
-float Math3d::Vector3D::at(unsigned int a)const
+float Math::Vector3D::at(unsigned int a)const
 {
 	try
 	{
@@ -32,7 +32,7 @@ float Math3d::Vector3D::at(unsigned int a)const
 	return b;
 }
 
-float& Math3d::Vector3D::operator[](unsigned int a)
+float& Math::Vector3D::operator[](unsigned int a)
 {
 	try
 	{
@@ -47,7 +47,7 @@ float& Math3d::Vector3D::operator[](unsigned int a)
 	return b;
 }
 
-bool Math3d::Vector3D::operator==(const Vector3D& B)const
+bool Math::Vector3D::operator==(const Vector3D& B)const
 {
 	for (int i = 0; i < 3; i++)
 	{
@@ -56,7 +56,17 @@ bool Math3d::Vector3D::operator==(const Vector3D& B)const
 	return true;
 }
 
-bool Math3d::Vector3D::operator!=(const Vector3D& B)const
+bool Math::Vector3D::operator!=(const Vector3D& B)const
 {
 	return !(*this==B);
+}
+
+Matrix* Math::Vector3D::TurnToMatrix()
+{
+	Matrix* New = new Matrix(3, 1);
+	for (int i = 0; i < 3; i++)
+	{
+		(*New)[0][i] = (*this)[i];
+	}
+	return New;
 }
