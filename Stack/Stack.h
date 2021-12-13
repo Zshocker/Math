@@ -1,96 +1,36 @@
 #pragma once
+#include"ListeChaine.h"
 namespace Algo {
 	template <class T>
 	class Stack
 	{
 
 	public:
-		void push(T* E);
-		void pop();
-		bool empty() const;
-		T* top() const;
-		static Stack* creator();
-		static void garbage(Stack* S);
-		Stack();
-		~Stack();
-	private:
-		class Node* head;
-		
-	};
-};
-namespace Algo {
-	template<class T>
-	class Node
-	{
-	private:
-		T* data;
-		Node* next;
-	public:
-		void push_front(T* E) {
-			Node* newNode = new Node();
-			assert(newNode != 0);
-			newNode->data = E;
-			newNode->next = this->head;
-			this->head = newNode;
-		};
-		void push_back() 
+		void push(T E)
 		{
-			Node* newNode = new Node();
-			assert(newNode != 0);
-			newNode->data = E;
-			newNode->next = NULL;
-			Node* cou =this;
-			while (cou->next)cou = cou->next;
-			cou->next = newNode;
+			inner_stack.push_front(E);
 		}
-		T acces_Head() {
-
+		void pop() {
+			inner_stack.Delete_front();
 		}
+		bool empty() const 
+		{
+			return inner_stack.isEmpty();
+		}
+		T top() const
+		{
+			return inner_stack[0];
+		}
+		int size() const
+		{
+			return inner_stack.size();
+		}
+		void Print() const
+		{
+			cout << "Stack :";
+			inner_stack.Print();
+		}
+	private:
+		Liste<T> inner_stack;
 	};
 };
-
-void Algo::Stack::pop()
-{
-	assert(!this->empty());
-	Node* supp = this->head;
-	this->head = this->head->next;
-	delete supp;
-	supp = 0;
-}
-
-bool Algo::Stack::empty() const
-{
-	bool res = (this->head == 0);
-	return res;
-}
-
-T* Algo::Stack::top() const
-{
-	assert(!this->empty());
-	return this->head->data;
-}
-Stack* Algo::Stack::creator()
-{
-	Stack* S = new Stack();
-	assert(S);
-	return S;
-}
-void Algo::Stack::garbage(Stack* S)
-{
-	if (S)
-		delete S;
-}
-Stack::Stack()
-{
-	this->head = 0;
-}
-
-Algo::Stack::~Stack()
-{
-	while (this->head)
-	{
-		this->pop();
-	}
-	// delete this->head;
-	// this->head = 0;
-}

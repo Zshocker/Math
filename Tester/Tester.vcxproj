@@ -117,7 +117,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\hicham\source\repos\Math\MathLib;C:\Users\hp\source\repos\Math\MathLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\hp\source\repos\Math\Stack;C:\Users\hicham\source\repos\Math\MathLib;C:\Users\hp\source\repos\Math\MathLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,6 +147,9 @@
   <ItemGroup>
     <ProjectReference Include="..\MathLib\MathLib.vcxproj">
       <Project>{963cee2e-0661-4a88-b034-c8a2d314fc5a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Stack\StaticLib1ILISI.vcxproj">
+      <Project>{fc7dfa31-716a-48c4-b50f-56cde7f6154a}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
