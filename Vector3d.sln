@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tester", "Tester\Tester.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MathLib", "MathLib\MathLib.vcxproj", "{963CEE2E-0661-4A88-B034-C8A2D314FC5A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StaticLib1ILISI", "Stack\StaticLib1ILISI.vcxproj", "{FC7DFA31-716A-48C4-B50F-56CDE7F6154A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{963CEE2E-0661-4A88-B034-C8A2D314FC5A}.Release|x64.Build.0 = Release|x64
 		{963CEE2E-0661-4A88-B034-C8A2D314FC5A}.Release|x86.ActiveCfg = Release|Win32
 		{963CEE2E-0661-4A88-B034-C8A2D314FC5A}.Release|x86.Build.0 = Release|Win32
+		{FC7DFA31-716A-48C4-B50F-56CDE7F6154A}.Debug|x64.ActiveCfg = Debug|x64
+		{FC7DFA31-716A-48C4-B50F-56CDE7F6154A}.Debug|x64.Build.0 = Debug|x64
+		{FC7DFA31-716A-48C4-B50F-56CDE7F6154A}.Debug|x86.ActiveCfg = Debug|Win32
+		{FC7DFA31-716A-48C4-B50F-56CDE7F6154A}.Debug|x86.Build.0 = Debug|Win32
+		{FC7DFA31-716A-48C4-B50F-56CDE7F6154A}.Release|x64.ActiveCfg = Release|x64
+		{FC7DFA31-716A-48C4-B50F-56CDE7F6154A}.Release|x64.Build.0 = Release|x64
+		{FC7DFA31-716A-48C4-B50F-56CDE7F6154A}.Release|x86.ActiveCfg = Release|Win32
+		{FC7DFA31-716A-48C4-B50F-56CDE7F6154A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
